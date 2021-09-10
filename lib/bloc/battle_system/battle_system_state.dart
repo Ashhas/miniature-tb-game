@@ -11,6 +11,14 @@ class BattleInitiated extends BattleSystemState {
 }
 
 class StrategyPhase extends BattleSystemState {
+  final PlayerUnit playerUnit;
+  final PlayerUnit enemyUnit;
+
+  StrategyPhase({
+    required this.playerUnit,
+    required this.enemyUnit,
+  });
+
   @override
   List<Object> get props => [];
 }
