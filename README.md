@@ -1,2 +1,2 @@
 # miniature-tb-game
-Simple Turned Based battle game. Meant for practice with BloC States
+Simple state management practice in the form of turned-based game
