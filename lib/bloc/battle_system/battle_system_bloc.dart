@@ -2,13 +2,18 @@ import 'dart:async';
 import 'package:meta/meta.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:miniature_tb_game/data/model/player_unit.dart';
 
 part 'battle_system_event.dart';
 
 part 'battle_system_state.dart';
 
 class BattleSystemBloc extends Bloc<BattleSystemEvent, BattleSystemState> {
-  BattleSystemBloc() : super(BattleInitiated());
+  late PlayerUnit playerUnit;
+  late PlayerUnit enemyUnit;
+
+  BattleSystemBloc({required this.playerUnit, required this.enemyUnit})
+      : super(BattleInitiated());
 
   @override
   Stream<BattleSystemState> mapEventToState(BattleSystemEvent event) async* {
@@ -20,10 +25,14 @@ class BattleSystemBloc extends Bloc<BattleSystemEvent, BattleSystemState> {
   }
 
   Stream<BattleSystemState> _mapStartBattleEventToState() async* {
-    await Future.delayed(Duration(seconds: 1));
+    yield StrategyPhase(playerUnit: playerUnit, enemyUnit: enemyUnit);
   }
 
   Stream<BattleSystemState> _mapEngageBattlePhaseEventToState() async* {
-    await Future.delayed(Duration(seconds: 1));
+    yield AttackPhase();
+
+    enemyUnit.currentHp -= 1;
+
+    yield StrategyPhase(playerUnit: playerUnit, enemyUnit: enemyUnit);
   }
 }
