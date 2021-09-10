@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:miniature_tb_game/data/model/player_unit.dart';
 
 class UnitWidget extends StatefulWidget {
-  final PlayerUnit playerUnit;
+  final PlayerUnit unit;
 
   const UnitWidget({
-    required this.playerUnit,
+    required this.unit,
   });
 
   @override
@@ -17,16 +17,16 @@ class _UnitWidgetState extends State<UnitWidget> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text("Name: " + widget.playerUnit.unitName),
+        Text("Name: " + widget.unit.unitName),
         Container(
           width: 20,
           height: 20,
           color: Colors.red,
         ),
         Text("HP: " +
-            widget.playerUnit.currentHp.toString() +
+            widget.unit.currentHp.toString() +
             "/" +
-            widget.playerUnit.maxHp.toString()),
+            widget.unit.maxHp.toString()),
       ],
     );
   }

@@ -26,10 +26,7 @@ class _BattleScreenState extends State<BattleScreen> {
         mainAxisSize: MainAxisSize.max,
         children: [
           DisplayWidget(),
-          Container(
-            alignment: Alignment.bottomCenter,
-            child: ControlPad(),
-          ),
+          ControlPad(),
         ],
       ),
     );

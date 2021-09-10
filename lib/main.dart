@@ -19,14 +19,14 @@ class MyApp extends StatelessWidget {
     PlayerUnit player = PlayerUnit(
         unitName: "player",
         unitLevel: 10,
-        damageAmount: 2,
+        damageAmount: 1.5,
         maxHp: 10,
         currentHp: 10);
 
     PlayerUnit enemy = PlayerUnit(
         unitName: "enemy",
         unitLevel: 10,
-        damageAmount: 2,
+        damageAmount: 1,
         maxHp: 10,
         currentHp: 10);
 

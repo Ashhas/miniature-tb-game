@@ -12,31 +12,26 @@ class ControlPad extends StatefulWidget {
 class _ControlPadState extends State<ControlPad> {
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 2 / 1,
-      child: Container(
-        decoration: BoxDecoration(
-          color: Theme.of(context).primaryColor,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(10),
-            topRight: Radius.circular(10),
+    return Container(
+      alignment: Alignment.bottomCenter,
+      child: AspectRatio(
+        aspectRatio: 2 / 1,
+        child: Container(
+          decoration: BoxDecoration(
+            color: Theme.of(context).primaryColor,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
+            ),
           ),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            ElevatedButton(
-              child: Text("Attack"),
-              onPressed: () {
-                BlocProvider.of<BattleSystemBloc>(context)
-                    .add(EngageBattlePhase());
-              },
-            ),
-            ElevatedButton(
-              child: Text("Heal"),
-              onPressed: () {},
-            ),
-          ],
+          child: ElevatedButton(
+            child: Text("Attack"),
+            onPressed: () {
+              BlocProvider.of<BattleSystemBloc>(context).add(
+                EngageBattlePhase(),
+              );
+            },
+          ),
         ),
       ),
     );

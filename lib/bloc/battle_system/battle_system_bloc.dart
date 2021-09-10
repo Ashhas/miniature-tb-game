@@ -31,8 +31,29 @@ class BattleSystemBloc extends Bloc<BattleSystemEvent, BattleSystemState> {
   Stream<BattleSystemState> _mapEngageBattlePhaseEventToState() async* {
     yield AttackPhase();
 
-    enemyUnit.currentHp -= 1;
+    attackEnemy();
+    attackPlayer();
 
-    yield StrategyPhase(playerUnit: playerUnit, enemyUnit: enemyUnit);
+    // Check if a unit has reached zero or below zero
+    if (playerUnit.currentHp <= 0 || enemyUnit.currentHp <= 0) {
+      // Check which unit reached zero to determine battle result
+      if (playerUnit.currentHp > enemyUnit.currentHp) {
+        yield BattleWon();
+      } else if (enemyUnit.currentHp > playerUnit.currentHp) {
+        yield BattleLost();
+      }
+    } else {
+      yield StrategyPhase(playerUnit: playerUnit, enemyUnit: enemyUnit);
+    }
+  }
+
+  void attackEnemy() {
+    //Set amount of damage to player
+    enemyUnit.takeDamage(playerUnit.damageAmount);
+  }
+
+  void attackPlayer() {
+    //Set amount of damage to player
+    playerUnit.takeDamage(enemyUnit.damageAmount);
   }
 }
