@@ -5,13 +5,13 @@ class PlayerUnit {
   double maxHp;
   double currentHp;
 
-  PlayerUnit(
-    this.unitName,
-    this.unitLevel,
-    this.damageAmount,
-    this.maxHp,
-    this.currentHp,
-  );
+  PlayerUnit({
+    required this.unitName,
+    required this.unitLevel,
+    required this.damageAmount,
+    required this.maxHp,
+    required this.currentHp,
+  });
 
   // Takes a damageAmount to update [currentHp] of the unit
   void takeDamage(double damageDone) {
