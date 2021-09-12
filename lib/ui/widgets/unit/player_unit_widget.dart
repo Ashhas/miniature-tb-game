@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:miniature_tb_game/bloc/battle_system/battle_system_bloc.dart';
-import 'package:miniature_tb_game/ui/widgets/unit_widget.dart';
+import 'package:miniature_tb_game/ui/widgets/unit/unit_widget.dart';
 
 class PlayerUnitWidget extends StatefulWidget {
   const PlayerUnitWidget();
@@ -18,6 +18,8 @@ class _PlayerUnitWidgetState extends State<PlayerUnitWidget> {
       child: BlocBuilder<BattleSystemBloc, BattleSystemState>(
         builder: (context, state) {
           if (state is StrategyPhase) {
+            return UnitWidget(unit: state.playerUnit);
+          } else if (state is BattlePhase) {
             return UnitWidget(unit: state.playerUnit);
           } else {
             return Container();

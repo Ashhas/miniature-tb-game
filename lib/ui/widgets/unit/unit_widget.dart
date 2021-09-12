@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:miniature_tb_game/bloc/unit/unit_bloc.dart';
 import 'package:miniature_tb_game/data/model/player_unit.dart';
 
 class UnitWidget extends StatefulWidget {
@@ -18,10 +20,24 @@ class _UnitWidgetState extends State<UnitWidget> {
     return Column(
       children: [
         Text("Name: " + widget.unit.unitName),
-        Container(
-          width: 20,
-          height: 20,
-          color: Colors.red,
+        BlocBuilder<UnitBloc, UnitState>(
+          builder: (context, state) {
+            if (state is UnitIdleState) {
+              return Container(
+                width: 20,
+                height: 20,
+                color: Colors.red,
+              );
+            }
+            if (state is UnitBattleState) {
+              return Container(
+                width: 20,
+                height: 20,
+                color: Colors.yellow,
+              );
+            }
+            return Container();
+          },
         ),
         Text("HP: " +
             widget.unit.currentHp.toString() +

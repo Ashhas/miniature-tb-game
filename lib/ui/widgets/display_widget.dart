@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:miniature_tb_game/bloc/battle_system/battle_system_bloc.dart';
-import 'package:miniature_tb_game/ui/widgets/enemy_unit_widget.dart';
-import 'package:miniature_tb_game/ui/widgets/player_unit_widget.dart';
-import 'package:miniature_tb_game/ui/widgets/unit_widget.dart';
+import 'package:miniature_tb_game/ui/widgets/unit/enemy_unit_widget.dart';
+import 'package:miniature_tb_game/ui/widgets/unit/player_unit_widget.dart';
+import 'package:miniature_tb_game/ui/widgets/unit/unit_widget.dart';
 
 class DisplayWidget extends StatefulWidget {
   const DisplayWidget();

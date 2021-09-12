@@ -23,7 +23,15 @@ class StrategyPhase extends BattleSystemState {
   List<Object> get props => [];
 }
 
-class AttackPhase extends BattleSystemState {
+class BattlePhase extends BattleSystemState {
+  final PlayerUnit playerUnit;
+  final PlayerUnit enemyUnit;
+
+  BattlePhase({
+    required this.playerUnit,
+    required this.enemyUnit,
+  });
+
   @override
   List<Object> get props => [];
 }

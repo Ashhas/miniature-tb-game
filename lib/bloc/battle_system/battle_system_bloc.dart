@@ -29,7 +29,9 @@ class BattleSystemBloc extends Bloc<BattleSystemEvent, BattleSystemState> {
   }
 
   Stream<BattleSystemState> _mapEngageBattlePhaseEventToState() async* {
-    yield AttackPhase();
+    yield BattlePhase(playerUnit: playerUnit, enemyUnit: enemyUnit);
+
+    await Future.delayed(Duration(milliseconds: 15));
 
     attackEnemy();
     attackPlayer();
@@ -48,7 +50,7 @@ class BattleSystemBloc extends Bloc<BattleSystemEvent, BattleSystemState> {
   }
 
   void attackEnemy() {
-    //Set amount of damage to player
+    //Set amount of damage to enemy
     enemyUnit.takeDamage(playerUnit.damageAmount);
   }
 
