@@ -1,11 +1,11 @@
-class PlayerUnit {
+class UnitModel {
   String unitName;
   int unitLevel;
   double damageAmount;
   double maxHp;
   double currentHp;
 
-  PlayerUnit({
+  UnitModel({
     required this.unitName,
     required this.unitLevel,
     required this.damageAmount,
