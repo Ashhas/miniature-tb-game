@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:miniature_tb_game/bloc/battle_system/battle_system_bloc.dart';
 import 'package:miniature_tb_game/bloc/enemy_unit/enemy_unit_bloc.dart';
@@ -8,11 +9,16 @@ import 'package:miniature_tb_game/data/model/unit_model.dart';
 import 'package:miniature_tb_game/ui/battle_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   //Initialize Bloc Observer
   Bloc.observer = SimpleBlocObserver();
 
-  //Start App
-  runApp(MyApp());
+  //Set rotation then launch appp
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then((_) {
+    runApp(MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {
